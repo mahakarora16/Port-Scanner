@@ -1,19 +1,17 @@
 import socket
 from concurrent.futures import ThreadPoolExecutor
 
-# Function to scan a single port
 def scan_port(host, port):
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(0.5)  # short timeout
+        sock.settimeout(0.5)  
         result = sock.connect_ex((host, port))
         if result == 0:
             print(f"[OPEN] Port {port}")
         sock.close()
     except Exception as e:
-        pass  # handle silently for now
+        pass  
 
-# Main function
 def run_scanner():
     print("=== Port Scanner ===")
     target = input("Enter target IP or domain: ")
